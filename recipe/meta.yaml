@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/umachine_pyio-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/umachine_pyio-{{ version }}.tar.gz
   sha256: 140d193812fa2d195fc2c7514ae0520cb45549e71ad1503a28dd740db82d280c
 
 build:
@@ -16,13 +16,13 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools >=45
     - setuptools-scm >=7
     - tomli >=1.0.0
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy
     - astropy-base
 
@@ -33,6 +33,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/aphearin/umachine_pyio
